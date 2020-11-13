@@ -1,17 +1,12 @@
 package agendafamiliar.service;
 
-import agendafamiliar.dal.entity.Contato;
 import agendafamiliar.exception.SendMailException;
-import agendafamiliar.util.DateUtil;
+import agendafamiliar.vo.Contato;
 import org.springframework.stereotype.Service;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -42,8 +37,8 @@ public class MailService {
             message.setFrom(new InternetAddress(origemEmail));
             message.setReplyTo(new Address[]{ new InternetAddress(origemEmail) });
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(adminEmail));
-            message.setSubject("Contato Fastvagas. Assunto: " + contact.getSubject());
-            message.setText("Novo contato feito a partir do site: " + contact.getMessage());
+            message.setSubject("Contato Fastvagas. Assunto: " + contact.getAssunto());
+            message.setText("Novo contato feito a partir do site: " + contact.getMensagem());
             message.setSentDate(new java.util.Date());
 
             Transport.send(message);
@@ -63,7 +58,7 @@ public class MailService {
             message.setFrom(new InternetAddress(origemEmail));
             message.setReplyTo(new Address[]{ new InternetAddress(origemEmail)});
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(contact.getEmail()));
-            message.setSubject("Contato Fastvagas. Assunto: " + contact.getSubject());
+            message.setSubject("Contato Fastvagas. Assunto: " + contact.getAssunto());
             message.setText("Obrigado por entrar em contato. Em breve responderemos!");
             message.setSentDate(new java.util.Date());
 

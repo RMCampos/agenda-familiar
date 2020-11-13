@@ -1,4 +1,4 @@
-package agendafamiliar.dal.dao;
+package agendafamiliar.persistence.dao;
 
 import agendafamiliar.exception.DatabaseException;
 import org.springframework.dao.DataAccessException;

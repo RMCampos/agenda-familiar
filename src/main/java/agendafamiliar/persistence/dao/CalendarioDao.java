@@ -1,7 +1,7 @@
-package agendafamiliar.dal.dao;
+package agendafamiliar.persistence.dao;
 
-import agendafamiliar.dal.entity.Calendario;
-import agendafamiliar.dal.mapper.CalendarioRowMapper;
+import agendafamiliar.persistence.entity.Calendario;
+import agendafamiliar.persistence.mapper.CalendarioRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -22,7 +22,7 @@ public class CalendarioDao extends Dao<Calendario> {
                 + "WHERE " + Calendario.CALENDARIO_ID + "=:" + Calendario.CALENDARIO_ID;
 
         SqlParameterSource params = new MapSqlParameterSource()
-                .addValue(City.CITY_ID, calendario_id);
+                .addValue(Calendario.CALENDARIO_ID, calendario_id);
 
         return getObjectFromResult(query, params);
     }

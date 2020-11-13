@@ -1,4 +1,4 @@
-package agendafamiliar.dal.entity;
+package agendafamiliar.persistence.entity;
 
 import java.util.Objects;
 

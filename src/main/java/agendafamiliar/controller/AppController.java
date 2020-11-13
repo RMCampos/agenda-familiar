@@ -11,24 +11,26 @@ public class AppController {
         return "index";
     }
 
-    @GetMapping("/app")
-    public String appIndex() {
-        return "app/index";
+    @GetMapping("/contato")
+    public String contato() {
+        return "contato";
     }
 
-    @GetMapping("/termos-de-busca")
-    public String termosDeBusca() {
-        return "app/termos";
-    }
-
-    @GetMapping("/minha-conta")
-    public String minhaConta() {
-        return "app/minha_conta";
+    @GetMapping("/sobre")
+    public String sobre() {
+        return "sobre";
     }
 
     @GetMapping("/login")
     public String login() {
         return "login";
+    }
+
+    /* --- */
+
+    @GetMapping("/app")
+    public String appIndex() {
+        return "app/index";
     }
 
     @GetMapping("/access-denied")

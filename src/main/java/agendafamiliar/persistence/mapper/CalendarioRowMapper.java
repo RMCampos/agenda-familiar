@@ -1,6 +1,6 @@
-package agendafamiliar.dal.mapper;
+package agendafamiliar.persistence.mapper;
 
-import agendafamiliar.dal.entity.Calendario;
+import agendafamiliar.persistence.entity.Calendario;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

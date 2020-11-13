@@ -1,7 +1,7 @@
-package agendafamiliar.dal.service;
+package agendafamiliar.persistence.repository;
 
-import agendafamiliar.dal.dao.UsuarioDao;
-import agendafamiliar.dal.entity.Usuario;
+import agendafamiliar.persistence.dao.UsuarioDao;
+import agendafamiliar.persistence.entity.Usuario;
 import agendafamiliar.exception.EntityNotFoundException;
 import agendafamiliar.exception.InUseException;
 import agendafamiliar.exception.InvalidEmailException;
@@ -15,7 +15,7 @@ import javax.mail.internet.AddressException;
 import java.util.List;
 
 @Service
-public class UsuarioService {
+public class UsuarioRepository {
 
     @Autowired
     private UsuarioDao usuarioDao;
