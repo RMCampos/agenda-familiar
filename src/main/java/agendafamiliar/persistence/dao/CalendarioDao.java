@@ -5,11 +5,13 @@ import agendafamiliar.persistence.mapper.CalendarioRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Repository
 public class CalendarioDao extends Dao<Calendario> {
 
     public CalendarioDao(NamedParameterJdbcTemplate template) {

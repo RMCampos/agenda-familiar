@@ -1,7 +1,7 @@
 package agendafamiliar.controller;
 
 import agendafamiliar.persistence.entity.Usuario;
-import agendafamiliar.persistence.repository.UsuarioRepository;
+import agendafamiliar.persistence.access.UsuarioAccess;
 import agendafamiliar.exception.InvalidEmailException;
 import agendafamiliar.service.MailService;
 import agendafamiliar.util.MailUtil;
@@ -19,7 +19,7 @@ public class GuestController {
     private MailService mailService;
 
     @Autowired
-    private UsuarioRepository usuarioService;
+    private UsuarioAccess usuarioService;
 
     @GetMapping(value = "/email-available/{email}")
     public Boolean isEmailAvailable(@PathVariable("email") String email) {

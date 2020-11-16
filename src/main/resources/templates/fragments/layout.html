@@ -1,72 +1,87 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="pt-br">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="author" content="Ricardo Montania Prado de Campos">
-    <link rel="icon" type="image/png" sizes="16x16" href="/user/img/favicon.png">
+    <meta name="reply-to" content="ricardo.montania@gmail.com">
+    <meta name="description" content="Controle de aniversários e datas online.">
+    <meta name="keywords" content="aniversários online, datas online, lembrar aniversários online, lembrar datas online">
+    <meta name="robots" content="index,follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ base_url() }}/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ base_url() }}/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ base_url() }}/favicons/favicon-16x16.png">
+    <link rel="manifest" href="{{ base_url() }}/favicons/manifest.json">
+    <link rel="mask-icon" href="{{ base_url() }}/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
     <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Spring Security Thymeleaf</title>
-    <link rel="stylesheet" type="text/css" href="/dist/css/app.css" id="theme">
-
-    <!--<link rel="stylesheet" href="/datatables/datatables.css">-->
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/favicon/site.webmanifest">
-    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#ff916e">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ff916e">
-
-    <meta property="og:image:height" content="520">
-    <meta property="og:image:width" content="993">
-    <meta property="og:description" content="Ofertas de emprego a toda hora!">
-    <meta property="og:title" content="Fastvagas">
-    <meta property="og:url" content="https://agendafamiliar.com.br">
-    <meta property="og:image" content="https://fastvagas/faceog/og-image.jpg">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <link rel="canonical" href="http://www.rjanivers.tk{{ page? '/' ~ page : '' }}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/application.css"/>
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top topnav">
+        <div class="container-fluid topnav">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ auth.check ? path_for('home') : path_for('index') }}">RJAnivers</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="" sec:authorize="!isAuthenticated()">
+                        <a th:href="@{/}">Home</a>
+                    </li>
+                    <li class="" sec:authorize="isAuthenticated()">
+                        <a href="{{ path_for('calendarios') }}">Calendários</a>
+                    </li>
+                    <li class="" sec:authorize="isAuthenticated()">
+                        <a href="{{ path_for('aniversarios') }}">Aniversários</a>
+                    </li>
+                    <li class="" sec:authorize="isAuthenticated()">
+                        <a th:href="@{/app/home}">Home</a>
+                    </li>
+                    <li class="">
+                        <a th:href="@{/contato}">Contato</a>
+                    </li>
+                    <li class="">
+                        <a th:href="@{/sobre}">Sobre Nós</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li sec:authorize="isAuthenticated()">
+                        <a th:href="@{/logout}">Sair</a>
+                    </li>
+                    <li sec:authorize="!isAuthenticated()" class="">
+                        <a th:href="@{/criar-conta}">Criar conta</a>
+                    </li>
+                    <li sec:authorize="!isAuthenticated()" class="">
+                        <a th:href="@{/acessar-conta}">Acessar conta</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<body class="fix-header">
-<div class="preloader">
-    <svg class="circular" viewBox="25 25 50 50">
-        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
-    </svg>
-</div>
-<div id="wrapper">
-    <th:block th:replace="fragments/header :: header"/>
 
-    <div id="page-wrapper">
-        <th:block layout:fragment="content"/>
-        <th:block th:replace="fragments/footer :: footer"/>
-    </div>
-</div>
+    <th:block layout:fragment="content"/>
 
-<script type="text/javascript" src="/dist/js/app.js"></script>
-<script type="text/javascript" src="/dist/js/app-ko.js"></script>
-
-<!-- apenas admin
-<script src="/datatables/datatables.min.js"></script>
-<script src="/ko/form-pessoa.js"></script>
-<script src="/ko/adm-pessoas.js"></script>
-<script src="/ko/form-portal.js"></script>
-<script src="/ko/adm-portais.js"></script>
-<script src="/ko/adm-vagas.js"></script>
-<script src="/ko/adm-historico.js"></script>
-<script src="/ko/form-cron.js"></script>
-<script src="/ko/adm-cron.js"></script>
--->
-
-<!-- Custom Theme JavaScript -->
-<script src="/js/dashboard1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="/js/application.js"></script>
 </body>
 </html>

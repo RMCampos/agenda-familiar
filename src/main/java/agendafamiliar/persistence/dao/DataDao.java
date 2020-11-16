@@ -1,16 +1,17 @@
 package agendafamiliar.persistence.dao;
 
-import agendafamiliar.persistence.entity.Calendario;
 import agendafamiliar.persistence.entity.Data;
 import agendafamiliar.persistence.mapper.DataRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Repository
 public class DataDao extends Dao<Data> {
 
     public DataDao(NamedParameterJdbcTemplate template) {

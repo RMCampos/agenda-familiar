@@ -1,7 +1,7 @@
 package agendafamiliar.service;
 
 import agendafamiliar.persistence.entity.Usuario;
-import agendafamiliar.persistence.repository.UsuarioRepository;
+import agendafamiliar.persistence.access.UsuarioAccess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class AuthService {
 
     @Autowired
-    private UsuarioRepository usuarioService;
+    private UsuarioAccess usuarioService;
 
     public Usuario getUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

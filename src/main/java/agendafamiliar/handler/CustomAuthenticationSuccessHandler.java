@@ -1,7 +1,7 @@
 package agendafamiliar.handler;
 
 import agendafamiliar.persistence.entity.Usuario;
-import agendafamiliar.persistence.repository.UsuarioRepository;
+import agendafamiliar.persistence.access.UsuarioAccess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -16,7 +16,7 @@ import java.io.IOException;
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     @Autowired
-    private UsuarioRepository usuarioService;
+    private UsuarioAccess usuarioService;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,

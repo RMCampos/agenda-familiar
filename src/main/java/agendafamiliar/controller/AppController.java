@@ -11,9 +11,24 @@ public class AppController {
         return "index";
     }
 
-    @GetMapping("/contato")
-    public String contato() {
-        return "contato";
+    @GetMapping("/criar-conta")
+    public String criarConta() {
+        return "criar-conta";
+    }
+
+    @GetMapping("/acessar-conta")
+    public String acessarConta() {
+        return "acessar-conta";
+    }
+
+    @GetMapping("/resetar-senha")
+    public String resetarSenha() {
+        return "resetar-conta";
+    }
+
+    @GetMapping("/confirmar-reset-senha")
+    public String confirmarResetSenha() {
+        return "confirmar-reset-conta";
     }
 
     @GetMapping("/sobre")
@@ -21,16 +36,21 @@ public class AppController {
         return "sobre";
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
+    @GetMapping("/contato")
+    public String contato() {
+        return "contato";
+    }
+
+    @GetMapping("/home")
+    public String home() {
+        return "home";
     }
 
     /* --- */
 
     @GetMapping("/app")
     public String appIndex() {
-        return "app/index";
+        return "app/home";
     }
 
     @GetMapping("/access-denied")
